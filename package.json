@@ -1,0 +1,16 @@
+{
+  "name": "highwater",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "lint": "eslint . --ext .ts,.tsx",
+    "dev": "turbo run dev",
+    "build": "turbo run build",
+    "start": "turbo run start"
+  },
+  "devDependencies": {
+    "turbo": "latest",
+    "eslint": "^8.0.0",
+    "typescript": "^5.0.0"
+  }
+}

@@ -1,0 +1,18 @@
+{
+    "compilerOptions": {
+      "target": "ES2021",                // modern Node support
+      "module": "CommonJS",              // for Node.js
+      "moduleResolution": "node",
+      "lib": ["ES2021"],
+      "strict": true,
+      "esModuleInterop": true,
+      "forceConsistentCasingInFileNames": true,
+      "skipLibCheck": true,
+      "baseUrl": ".",                    // for path mapping
+      "paths": {
+        "@/*": ["packages/web/*"]       // adjust if you add more aliases
+      }
+    },
+    "include": ["packages/**/*"],
+    "exclude": ["node_modules", "dist"]
+  }  
