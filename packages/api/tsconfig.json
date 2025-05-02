@@ -5,7 +5,7 @@
       "rootDir": "src",
       "baseUrl": "src",
       "paths": {
-        "@highwater/types": ["../../types/src"]
+        "@highwater/types": ["../types/dist"]
       }
     },
     "include": ["src"],
