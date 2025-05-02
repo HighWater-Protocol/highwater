@@ -2,9 +2,12 @@
     "extends": "../../tsconfig.json",
     "compilerOptions": {
       "outDir": "dist",
-      "rootDir": "src"
+      "rootDir": "src",
+      "baseUrl": "src",
+      "paths": {
+        "@highwater/types": ["../../types/src"]
+      }
     },
     "include": ["src"],
     "exclude": ["node_modules"]
 }
-  
