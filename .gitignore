@@ -41,6 +41,5 @@ yarn-error.log*
 next-env.d.ts
 
 #node.js
-pnpm-lock.yaml
 dist/
 .env.local

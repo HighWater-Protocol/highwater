@@ -1,7 +1,7 @@
 import { Router } from "express";
 import { RiskReport } from "@highwater/types";
 
-const router = Router();
+const router: Router = Router();
 
 // Example: GET /risk
 router.get("/", (req, res) => {

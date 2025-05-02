@@ -5,7 +5,7 @@ import portfoliosRouter from "./portfolios";
 import riskRouter from "./risk";
 import complianceRouter from "./compliance";
 
-const router = Router();
+const router: Router = Router();
 
 router.use("/assets", assetsRouter);
 router.use("/clients", clientsRouter);

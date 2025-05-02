@@ -2,6 +2,7 @@
   "name": "highwater",
   "version": "0.1.0",
   "private": true,
+  "packageManager": "pnpm@8.6.12",
   "scripts": {
     "lint": "eslint . --ext .ts,.tsx",
     "dev": "turbo run dev",
@@ -9,8 +10,11 @@
     "start": "turbo run start"
   },
   "devDependencies": {
-    "turbo": "latest",
     "eslint": "^8.0.0",
+    "turbo": "latest",
     "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "@auth0/nextjs-auth0": "^4.5.1"
   }
 }

@@ -1,7 +1,7 @@
 import { Router } from "express";
 import { ComplianceLog, ComplianceReport } from "@highwater/types";
 
-const router = Router();
+const router: Router = Router();
 
 // Example: GET /compliance/logs
 router.get("/logs", (req, res) => {
