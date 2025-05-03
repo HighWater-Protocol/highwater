@@ -1,7 +1,7 @@
 "use client";
 import React from 'react';
 import Link from 'next/link';
-import { useUser } from '@auth0/nextjs-auth0/client';
+import { useUser } from '../contexts/AuthContext';
 
 export default function AuthNav() {
   const { user, isLoading } = useUser();

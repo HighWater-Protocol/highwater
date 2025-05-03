@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { UserProvider } from '@auth0/nextjs-auth0/client';
+import { AuthProvider } from '../contexts/AuthContext';
 // import Link from 'next/link';
 
 const geistSans = Geist({
@@ -23,10 +23,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <body className="min-h-screen bg-gray-50">
-        <UserProvider>
-          {/* Removed legacy nav bar, all navigation is handled in NavBar component */}
+        <AuthProvider>
           {children}
-        </UserProvider>
+        </AuthProvider>
       </body>
     </html>
   )

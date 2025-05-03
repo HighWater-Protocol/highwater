@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 23, "column": 0}, "map": {"version":3,"sources":["file:///Users/zeke/projects/highwater/packages/web/pages/api/auth/%5B...auth0%5D.ts"],"sourcesContent":["import { handleAuth } from '@auth0/nextjs-auth0';\n\nexport default handleAuth();"],"names":[],"mappings":";;;AAAA;AAAA;;uCAEe,CAAA,GAAA,8TAAA,CAAA,aAAU,AAAD","debugId":null}}]
+}
