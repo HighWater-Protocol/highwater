@@ -86,6 +86,11 @@ export function AllocationBreakdown() {
                 <span className="text-gray-500 tabular-nums text-right min-w-[52px]">{((a.value / total) * 100).toFixed(1)}%</span>
               </li>
             ))}
+            <li className="flex items-center justify-between gap-2 border-t border-gray-200 pt-2 mt-2 font-bold">
+              <span className="flex items-center gap-2 text-gray-900 min-w-[110px]">Total</span>
+              <span className="text-gray-900 tabular-nums text-right min-w-[92px]">${total.toLocaleString()}</span>
+              <span className="text-gray-900 tabular-nums text-right min-w-[52px]">100%</span>
+            </li>
           </ul>
         </div>
       </div>

@@ -528,7 +528,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$packages$2f$web$2f$src$2f$co
 ;
 ;
 async function getHealth() {
-    const res = await fetch(`${("TURBOPACK compile-time value", "http://localhost:4000")}/health`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/health`, {
         cache: 'no-store'
     });
     if (!res.ok) {

@@ -54,7 +54,7 @@ function AuthNav() {
     if (!user) {
         return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$15$2e$3$2e$1_react$2d$dom$40$19$2e$0$2e$0_react$40$19$2e$0$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$15$2e$3$2e$1_react$2d$dom$40$19$2e$0$2e$0_react$40$19$2e$0$2e$0$2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
             href: "/api/auth/login",
-            className: "px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 font-semibold",
+            className: "px-4 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700 font-semibold",
             children: "Log In"
         }, void 0, false, {
             fileName: "[project]/packages/web/src/components/AuthNav.tsx",
@@ -157,7 +157,7 @@ function NavBar() {
                     className: "flex-1 flex items-center justify-start min-w-0",
                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$15$2e$3$2e$1_react$2d$dom$40$19$2e$0$2e$0_react$40$19$2e$0$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$15$2e$3$2e$1_react$2d$dom$40$19$2e$0$2e$0_react$40$19$2e$0$2e$0$2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
                         href: "/",
-                        className: "text-2xl font-bold text-blue-700 tracking-tight",
+                        className: "text-2xl font-bold text-black tracking-tight",
                         children: "HighWater Protocol"
                     }, void 0, false, {
                         fileName: "[project]/packages/web/src/components/NavBar.tsx",
@@ -414,58 +414,96 @@ function AllocationBreakdown() {
                         className: "flex-1 w-full flex flex-col justify-center",
                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$15$2e$3$2e$1_react$2d$dom$40$19$2e$0$2e$0_react$40$19$2e$0$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("ul", {
                             className: "space-y-2",
-                            children: MOCK_ALLOC.map((a, idx)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$15$2e$3$2e$1_react$2d$dom$40$19$2e$0$2e$0_react$40$19$2e$0$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
-                                    className: "flex items-center justify-between gap-2",
+                            children: [
+                                MOCK_ALLOC.map((a, idx)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$15$2e$3$2e$1_react$2d$dom$40$19$2e$0$2e$0_react$40$19$2e$0$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
+                                        className: "flex items-center justify-between gap-2",
+                                        children: [
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$15$2e$3$2e$1_react$2d$dom$40$19$2e$0$2e$0_react$40$19$2e$0$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                className: "flex items-center gap-2 text-gray-700 font-medium min-w-[110px]",
+                                                children: [
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$15$2e$3$2e$1_react$2d$dom$40$19$2e$0$2e$0_react$40$19$2e$0$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                        className: "inline-block w-3 h-3 rounded-full",
+                                                        style: {
+                                                            backgroundColor: COLORS[idx % COLORS.length]
+                                                        }
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/packages/web/src/components/AllocationBreakdown.tsx",
+                                                        lineNumber: 82,
+                                                        columnNumber: 19
+                                                    }, this),
+                                                    a.label
+                                                ]
+                                            }, void 0, true, {
+                                                fileName: "[project]/packages/web/src/components/AllocationBreakdown.tsx",
+                                                lineNumber: 81,
+                                                columnNumber: 17
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$15$2e$3$2e$1_react$2d$dom$40$19$2e$0$2e$0_react$40$19$2e$0$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                className: "text-gray-900 tabular-nums text-right min-w-[92px]",
+                                                children: [
+                                                    "$",
+                                                    a.value.toLocaleString()
+                                                ]
+                                            }, void 0, true, {
+                                                fileName: "[project]/packages/web/src/components/AllocationBreakdown.tsx",
+                                                lineNumber: 85,
+                                                columnNumber: 17
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$15$2e$3$2e$1_react$2d$dom$40$19$2e$0$2e$0_react$40$19$2e$0$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                className: "text-gray-500 tabular-nums text-right min-w-[52px]",
+                                                children: [
+                                                    (a.value / total * 100).toFixed(1),
+                                                    "%"
+                                                ]
+                                            }, void 0, true, {
+                                                fileName: "[project]/packages/web/src/components/AllocationBreakdown.tsx",
+                                                lineNumber: 86,
+                                                columnNumber: 17
+                                            }, this)
+                                        ]
+                                    }, a.label, true, {
+                                        fileName: "[project]/packages/web/src/components/AllocationBreakdown.tsx",
+                                        lineNumber: 80,
+                                        columnNumber: 15
+                                    }, this)),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$15$2e$3$2e$1_react$2d$dom$40$19$2e$0$2e$0_react$40$19$2e$0$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
+                                    className: "flex items-center justify-between gap-2 border-t border-gray-200 pt-2 mt-2 font-bold",
                                     children: [
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$15$2e$3$2e$1_react$2d$dom$40$19$2e$0$2e$0_react$40$19$2e$0$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                            className: "flex items-center gap-2 text-gray-700 font-medium min-w-[110px]",
-                                            children: [
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$15$2e$3$2e$1_react$2d$dom$40$19$2e$0$2e$0_react$40$19$2e$0$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                    className: "inline-block w-3 h-3 rounded-full",
-                                                    style: {
-                                                        backgroundColor: COLORS[idx % COLORS.length]
-                                                    }
-                                                }, void 0, false, {
-                                                    fileName: "[project]/packages/web/src/components/AllocationBreakdown.tsx",
-                                                    lineNumber: 82,
-                                                    columnNumber: 19
-                                                }, this),
-                                                a.label
-                                            ]
-                                        }, void 0, true, {
+                                            className: "flex items-center gap-2 text-gray-900 min-w-[110px]",
+                                            children: "Total"
+                                        }, void 0, false, {
                                             fileName: "[project]/packages/web/src/components/AllocationBreakdown.tsx",
-                                            lineNumber: 81,
-                                            columnNumber: 17
+                                            lineNumber: 90,
+                                            columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$15$2e$3$2e$1_react$2d$dom$40$19$2e$0$2e$0_react$40$19$2e$0$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                             className: "text-gray-900 tabular-nums text-right min-w-[92px]",
                                             children: [
                                                 "$",
-                                                a.value.toLocaleString()
+                                                total.toLocaleString()
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/packages/web/src/components/AllocationBreakdown.tsx",
-                                            lineNumber: 85,
-                                            columnNumber: 17
+                                            lineNumber: 91,
+                                            columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$15$2e$3$2e$1_react$2d$dom$40$19$2e$0$2e$0_react$40$19$2e$0$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                            className: "text-gray-500 tabular-nums text-right min-w-[52px]",
-                                            children: [
-                                                (a.value / total * 100).toFixed(1),
-                                                "%"
-                                            ]
-                                        }, void 0, true, {
+                                            className: "text-gray-900 tabular-nums text-right min-w-[52px]",
+                                            children: "100%"
+                                        }, void 0, false, {
                                             fileName: "[project]/packages/web/src/components/AllocationBreakdown.tsx",
-                                            lineNumber: 86,
-                                            columnNumber: 17
+                                            lineNumber: 92,
+                                            columnNumber: 15
                                         }, this)
                                     ]
-                                }, a.label, true, {
+                                }, void 0, true, {
                                     fileName: "[project]/packages/web/src/components/AllocationBreakdown.tsx",
-                                    lineNumber: 80,
-                                    columnNumber: 15
-                                }, this))
-                        }, void 0, false, {
+                                    lineNumber: 89,
+                                    columnNumber: 13
+                                }, this)
+                            ]
+                        }, void 0, true, {
                             fileName: "[project]/packages/web/src/components/AllocationBreakdown.tsx",
                             lineNumber: 78,
                             columnNumber: 11
