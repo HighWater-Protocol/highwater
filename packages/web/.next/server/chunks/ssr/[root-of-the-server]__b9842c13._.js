@@ -128,6 +128,14 @@ const NAV_LINKS = [
     {
         label: 'Portfolio',
         href: '/portfolio'
+    },
+    {
+        label: 'Taxes',
+        href: '/taxes'
+    },
+    {
+        label: 'Ask',
+        href: '/ask'
     }
 ];
 function NavBar() {
@@ -161,12 +169,12 @@ function NavBar() {
                         children: "HighWater Protocol"
                     }, void 0, false, {
                         fileName: "[project]/packages/web/src/components/NavBar.tsx",
-                        lineNumber: 38,
+                        lineNumber: 40,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/packages/web/src/components/NavBar.tsx",
-                    lineNumber: 37,
+                    lineNumber: 39,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$15$2e$3$2e$1_react$2d$dom$40$19$2e$0$2e$0_react$40$19$2e$0$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("ul", {
@@ -178,40 +186,40 @@ function NavBar() {
                                 children: link.label
                             }, void 0, false, {
                                 fileName: "[project]/packages/web/src/components/NavBar.tsx",
-                                lineNumber: 43,
+                                lineNumber: 45,
                                 columnNumber: 15
                             }, this)
                         }, link.href, false, {
                             fileName: "[project]/packages/web/src/components/NavBar.tsx",
-                            lineNumber: 42,
+                            lineNumber: 44,
                             columnNumber: 13
                         }, this))
                 }, void 0, false, {
                     fileName: "[project]/packages/web/src/components/NavBar.tsx",
-                    lineNumber: 40,
+                    lineNumber: 42,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$15$2e$3$2e$1_react$2d$dom$40$19$2e$0$2e$0_react$40$19$2e$0$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                     className: "flex-1 flex items-center justify-end gap-4 min-w-0",
                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$15$2e$3$2e$1_react$2d$dom$40$19$2e$0$2e$0_react$40$19$2e$0$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$packages$2f$web$2f$src$2f$components$2f$AuthNav$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
                         fileName: "[project]/packages/web/src/components/NavBar.tsx",
-                        lineNumber: 55,
+                        lineNumber: 57,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/packages/web/src/components/NavBar.tsx",
-                    lineNumber: 54,
+                    lineNumber: 56,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/packages/web/src/components/NavBar.tsx",
-            lineNumber: 36,
+            lineNumber: 38,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/packages/web/src/components/NavBar.tsx",
-        lineNumber: 35,
+        lineNumber: 37,
         columnNumber: 5
     }, this);
 }
@@ -350,7 +358,7 @@ const NEWS = [
         headline: 'SEC Chair Testifies on Crypto Regulation Framework',
         source: 'Bloomberg',
         time: '2h ago',
-        tag: 'SEC'
+        tag: 'US'
     },
     {
         headline: 'Ethereum Foundation Releases Validator Security Guidelines',
@@ -362,7 +370,7 @@ const NEWS = [
         headline: 'EU MiCA Framework Implementation Timeline Accelerated',
         source: 'Financial Times',
         time: '8h ago',
-        tag: 'MiCA'
+        tag: 'International'
     },
     {
         headline: 'Solana DeFi Protocol Patches Critical Vulnerability',
@@ -380,7 +388,7 @@ const NEWS = [
         headline: 'CFTC Issues Guidance on Crypto Derivatives Compliance',
         source: 'Reuters',
         time: '1d ago',
-        tag: 'CFTC'
+        tag: 'US'
     }
 ];
 }}),
@@ -791,57 +799,61 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$packages$2f$web$2f$src$2f$da
 ;
 function NewsFeed() {
     const [showAll, setShowAll] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$15$2e$3$2e$1_react$2d$dom$40$19$2e$0$2e$0_react$40$19$2e$0$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(false);
+    const [filter, setFilter] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$15$2e$3$2e$1_react$2d$dom$40$19$2e$0$2e$0_react$40$19$2e$0$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])('All');
     const VISIBLE_NEWS = 5;
+    // Filter logic
+    const filteredNews = filter === 'All' ? __TURBOPACK__imported__module__$5b$project$5d2f$packages$2f$web$2f$src$2f$data$2f$mockDashboard$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["NEWS"] : __TURBOPACK__imported__module__$5b$project$5d2f$packages$2f$web$2f$src$2f$data$2f$mockDashboard$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["NEWS"].filter((n)=>n.tag === filter);
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$15$2e$3$2e$1_react$2d$dom$40$19$2e$0$2e$0_react$40$19$2e$0$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-        className: "flex-1 bg-white rounded-lg shadow-lg border border-gray-200 p-6 flex flex-col h-full justify-between min-w-0 max-w-full relative",
+        className: "flex-1 bg-white rounded-lg shadow-lg border border-gray-200 p-6 space-y-4 flex flex-col h-full justify-between min-w-0 max-w-full relative",
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$15$2e$3$2e$1_react$2d$dom$40$19$2e$0$2e$0_react$40$19$2e$0$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "flex items-center justify-between mb-4",
+                className: "flex items-center justify-between mb-2",
                 children: [
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$15$2e$3$2e$1_react$2d$dom$40$19$2e$0$2e$0_react$40$19$2e$0$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
                         className: "text-xl font-medium text-gray-800",
                         children: "News & Regulatory Feed"
                     }, void 0, false, {
                         fileName: "[project]/packages/web/src/components/NewsFeed.tsx",
-                        lineNumber: 14,
+                        lineNumber: 18,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$15$2e$3$2e$1_react$2d$dom$40$19$2e$0$2e$0_react$40$19$2e$0$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         className: "flex space-x-2",
                         children: [
                             'All',
-                            'SEC',
-                            'MiCA',
+                            'US',
+                            'International',
                             'Portfolio'
                         ].map((f)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$15$2e$3$2e$1_react$2d$dom$40$19$2e$0$2e$0_react$40$19$2e$0$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                                 className: "px-3 py-1 text-xs font-medium text-gray-600 bg-gray-100 rounded hover:bg-gray-200",
+                                onClick: ()=>setFilter(f),
                                 children: f
                             }, f, false, {
                                 fileName: "[project]/packages/web/src/components/NewsFeed.tsx",
-                                lineNumber: 17,
+                                lineNumber: 21,
                                 columnNumber: 13
                             }, this))
                     }, void 0, false, {
                         fileName: "[project]/packages/web/src/components/NewsFeed.tsx",
-                        lineNumber: 15,
+                        lineNumber: 19,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/packages/web/src/components/NewsFeed.tsx",
-                lineNumber: 13,
+                lineNumber: 17,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$15$2e$3$2e$1_react$2d$dom$40$19$2e$0$2e$0_react$40$19$2e$0$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("ul", {
-                className: "space-y-4 flex-1",
-                children: (showAll ? __TURBOPACK__imported__module__$5b$project$5d2f$packages$2f$web$2f$src$2f$data$2f$mockDashboard$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["NEWS"] : __TURBOPACK__imported__module__$5b$project$5d2f$packages$2f$web$2f$src$2f$data$2f$mockDashboard$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["NEWS"].slice(0, VISIBLE_NEWS)).map((n)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$15$2e$3$2e$1_react$2d$dom$40$19$2e$0$2e$0_react$40$19$2e$0$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
+                className: "space-y-4 flex-1 overflow-auto",
+                children: (showAll ? filteredNews : filteredNews.slice(0, 10)).map((n)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$15$2e$3$2e$1_react$2d$dom$40$19$2e$0$2e$0_react$40$19$2e$0$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
                         className: "relative bg-white rounded-lg shadow-sm border border-gray-100 p-4",
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$15$2e$3$2e$1_react$2d$dom$40$19$2e$0$2e$0_react$40$19$2e$0$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f40$heroicons$2b$react$40$2$2e$2$2e$0_react$40$19$2e$0$2e$0$2f$node_modules$2f40$heroicons$2f$react$2f$24$2f$outline$2f$esm$2f$BookmarkIcon$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__BookmarkIcon$3e$__["BookmarkIcon"], {
                                 className: "absolute top-0 right-0 h-5 w-5 text-gray-300 hover:text-gray-500 cursor-pointer"
                             }, void 0, false, {
                                 fileName: "[project]/packages/web/src/components/NewsFeed.tsx",
-                                lineNumber: 29,
+                                lineNumber: 34,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$15$2e$3$2e$1_react$2d$dom$40$19$2e$0$2e$0_react$40$19$2e$0$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
@@ -849,7 +861,7 @@ function NewsFeed() {
                                 children: n.headline
                             }, void 0, false, {
                                 fileName: "[project]/packages/web/src/components/NewsFeed.tsx",
-                                lineNumber: 30,
+                                lineNumber: 35,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$15$2e$3$2e$1_react$2d$dom$40$19$2e$0$2e$0_react$40$19$2e$0$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -859,20 +871,20 @@ function NewsFeed() {
                                         children: n.source
                                     }, void 0, false, {
                                         fileName: "[project]/packages/web/src/components/NewsFeed.tsx",
-                                        lineNumber: 32,
+                                        lineNumber: 37,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$15$2e$3$2e$1_react$2d$dom$40$19$2e$0$2e$0_react$40$19$2e$0$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                         children: n.time
                                     }, void 0, false, {
                                         fileName: "[project]/packages/web/src/components/NewsFeed.tsx",
-                                        lineNumber: 33,
+                                        lineNumber: 38,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/packages/web/src/components/NewsFeed.tsx",
-                                lineNumber: 31,
+                                lineNumber: 36,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$15$2e$3$2e$1_react$2d$dom$40$19$2e$0$2e$0_react$40$19$2e$0$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -880,34 +892,34 @@ function NewsFeed() {
                                 children: n.tag
                             }, void 0, false, {
                                 fileName: "[project]/packages/web/src/components/NewsFeed.tsx",
-                                lineNumber: 35,
+                                lineNumber: 40,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, n.headline, true, {
                         fileName: "[project]/packages/web/src/components/NewsFeed.tsx",
-                        lineNumber: 28,
+                        lineNumber: 33,
                         columnNumber: 11
                     }, this))
             }, void 0, false, {
                 fileName: "[project]/packages/web/src/components/NewsFeed.tsx",
-                lineNumber: 26,
+                lineNumber: 31,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$15$2e$3$2e$1_react$2d$dom$40$19$2e$0$2e$0_react$40$19$2e$0$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "text-center mt-4",
+                className: "text-center pt-0",
                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$15$2e$3$2e$1_react$2d$dom$40$19$2e$0$2e$0_react$40$19$2e$0$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                     className: "text-sm font-medium text-blue-600 hover:underline focus:outline-none",
                     onClick: ()=>setShowAll(true),
                     children: "See more news →"
                 }, void 0, false, {
                     fileName: "[project]/packages/web/src/components/NewsFeed.tsx",
-                    lineNumber: 42,
+                    lineNumber: 47,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/packages/web/src/components/NewsFeed.tsx",
-                lineNumber: 41,
+                lineNumber: 46,
                 columnNumber: 7
             }, this),
             showAll && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$15$2e$3$2e$1_react$2d$dom$40$19$2e$0$2e$0_react$40$19$2e$0$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -922,7 +934,7 @@ function NewsFeed() {
                             children: "×"
                         }, void 0, false, {
                             fileName: "[project]/packages/web/src/components/NewsFeed.tsx",
-                            lineNumber: 52,
+                            lineNumber: 57,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$15$2e$3$2e$1_react$2d$dom$40$19$2e$0$2e$0_react$40$19$2e$0$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
@@ -930,7 +942,7 @@ function NewsFeed() {
                             children: "All News & Regulatory Feed"
                         }, void 0, false, {
                             fileName: "[project]/packages/web/src/components/NewsFeed.tsx",
-                            lineNumber: 59,
+                            lineNumber: 64,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$15$2e$3$2e$1_react$2d$dom$40$19$2e$0$2e$0_react$40$19$2e$0$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("ul", {
@@ -942,7 +954,7 @@ function NewsFeed() {
                                             className: "absolute top-0 right-0 h-5 w-5 text-gray-300 hover:text-gray-500 cursor-pointer"
                                         }, void 0, false, {
                                             fileName: "[project]/packages/web/src/components/NewsFeed.tsx",
-                                            lineNumber: 63,
+                                            lineNumber: 68,
                                             columnNumber: 19
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$15$2e$3$2e$1_react$2d$dom$40$19$2e$0$2e$0_react$40$19$2e$0$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
@@ -950,7 +962,7 @@ function NewsFeed() {
                                             children: n.headline
                                         }, void 0, false, {
                                             fileName: "[project]/packages/web/src/components/NewsFeed.tsx",
-                                            lineNumber: 64,
+                                            lineNumber: 69,
                                             columnNumber: 19
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$15$2e$3$2e$1_react$2d$dom$40$19$2e$0$2e$0_react$40$19$2e$0$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -960,20 +972,20 @@ function NewsFeed() {
                                                     children: n.source
                                                 }, void 0, false, {
                                                     fileName: "[project]/packages/web/src/components/NewsFeed.tsx",
-                                                    lineNumber: 66,
+                                                    lineNumber: 71,
                                                     columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$15$2e$3$2e$1_react$2d$dom$40$19$2e$0$2e$0_react$40$19$2e$0$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                     children: n.time
                                                 }, void 0, false, {
                                                     fileName: "[project]/packages/web/src/components/NewsFeed.tsx",
-                                                    lineNumber: 67,
+                                                    lineNumber: 72,
                                                     columnNumber: 21
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/packages/web/src/components/NewsFeed.tsx",
-                                            lineNumber: 65,
+                                            lineNumber: 70,
                                             columnNumber: 19
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$15$2e$3$2e$1_react$2d$dom$40$19$2e$0$2e$0_react$40$19$2e$0$2e$0$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -981,35 +993,35 @@ function NewsFeed() {
                                             children: n.tag
                                         }, void 0, false, {
                                             fileName: "[project]/packages/web/src/components/NewsFeed.tsx",
-                                            lineNumber: 69,
+                                            lineNumber: 74,
                                             columnNumber: 19
                                         }, this)
                                     ]
                                 }, n.headline, true, {
                                     fileName: "[project]/packages/web/src/components/NewsFeed.tsx",
-                                    lineNumber: 62,
+                                    lineNumber: 67,
                                     columnNumber: 17
                                 }, this))
                         }, void 0, false, {
                             fileName: "[project]/packages/web/src/components/NewsFeed.tsx",
-                            lineNumber: 60,
+                            lineNumber: 65,
                             columnNumber: 13
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/packages/web/src/components/NewsFeed.tsx",
-                    lineNumber: 51,
+                    lineNumber: 56,
                     columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/packages/web/src/components/NewsFeed.tsx",
-                lineNumber: 50,
+                lineNumber: 55,
                 columnNumber: 9
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/packages/web/src/components/NewsFeed.tsx",
-        lineNumber: 12,
+        lineNumber: 16,
         columnNumber: 5
     }, this);
 }

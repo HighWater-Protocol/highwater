@@ -8,6 +8,8 @@ const NAV_LINKS = [
   { label: 'Home', href: '/' },
   { label: 'Insights', href: '/insights' },
   { label: 'Portfolio', href: '/portfolio' },
+  { label: 'Taxes', href: '/taxes' },
+  { label: 'Ask', href: '/ask' },
 ];
 
 export default function NavBar() {

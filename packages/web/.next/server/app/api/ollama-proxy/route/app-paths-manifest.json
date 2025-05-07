@@ -1,0 +1,3 @@
+{
+  "/api/ollama-proxy/route": "app/api/ollama-proxy/route.js"
+}

@@ -68,18 +68,7 @@ export default async function Home() {
         {/* Allocation Breakdown */}
         <AllocationBreakdown />
 
-        {/* API Health */}
-        <section className="bg-white rounded shadow p-6">
-          <h2 className="text-xl font-semibold mb-2 text-gray-800">API Health Check</h2>
-          <div className="flex flex-col md:flex-row md:items-center md:space-x-8">
-            <div className="mb-2 md:mb-0">
-              <span className={`inline-block px-3 py-1 rounded-full text-white text-sm ${health.status === 'ok' ? 'bg-green-600' : 'bg-red-500'}`}>{health.status}</span>
-            </div>
-            <div>
-              <span className="text-gray-500 text-sm">Timestamp: {health.timestamp}</span>
-            </div>
-          </div>
-        </section>
+
       </main>
     </>
   );

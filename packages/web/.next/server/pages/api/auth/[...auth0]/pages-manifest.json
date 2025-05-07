@@ -1,3 +1,0 @@
-{
-  "/api/auth/[...auth0]": "pages/api/auth/[...auth0].js"
-}

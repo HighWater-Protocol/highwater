@@ -33,9 +33,13 @@ export default function InsightsPage() {
         <OnChainTrends />
 
         {/* Alerts & News */}
-        <div className="flex flex-col lg:flex-row gap-6">
-          <Alerts />
-          <NewsFeed />
+        <div className="flex flex-col lg:flex-row gap-6 h-[500px]">
+          <div className="flex-1 h-full overflow-y-auto">
+            <Alerts />
+          </div>
+          <div className="flex-1 h-full overflow-y-auto">
+            <NewsFeed />
+          </div>
         </div>
       </main>
     </>

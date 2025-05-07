@@ -6,25 +6,30 @@ import { NEWS } from '../data/mockDashboard';
 
 export default function NewsFeed() {
   const [showAll, setShowAll] = useState(false);
+  const [filter, setFilter] = useState('All');
   const VISIBLE_NEWS = 5;
 
+  // Filter logic
+  const filteredNews = filter === 'All' ? NEWS : NEWS.filter(n => n.tag === filter);
+
   return (
-    <div className="flex-1 bg-white rounded-lg shadow-lg border border-gray-200 p-6 flex flex-col h-full justify-between min-w-0 max-w-full relative">
-      <div className="flex items-center justify-between mb-4">
+    <div className="flex-1 bg-white rounded-lg shadow-lg border border-gray-200 p-6 space-y-4 flex flex-col h-full justify-between min-w-0 max-w-full relative">
+      <div className="flex items-center justify-between mb-2">
         <h2 className="text-xl font-medium text-gray-800">News & Regulatory Feed</h2>
         <div className="flex space-x-2">
-          {['All', 'SEC', 'MiCA', 'Portfolio'].map((f) => (
+          {['All', 'US', 'International', 'Portfolio'].map((f) => (
             <button
               key={f}
               className="px-3 py-1 text-xs font-medium text-gray-600 bg-gray-100 rounded hover:bg-gray-200"
+              onClick={() => setFilter(f)}
             >
               {f}
             </button>
           ))}
         </div>
       </div>
-      <ul className="space-y-4 flex-1">
-        {(showAll ? NEWS : NEWS.slice(0, VISIBLE_NEWS)).map((n) => (
+      <ul className="space-y-4 flex-1 overflow-auto">
+        {(showAll ? filteredNews : filteredNews.slice(0, 10)).map((n) => (
           <li key={n.headline} className="relative bg-white rounded-lg shadow-sm border border-gray-100 p-4">
             <BookmarkIcon className="absolute top-0 right-0 h-5 w-5 text-gray-300 hover:text-gray-500 cursor-pointer" />
             <h3 className="text-base font-medium text-gray-700">{n.headline}</h3>
@@ -38,7 +43,7 @@ export default function NewsFeed() {
           </li>
         ))}
       </ul>
-      <div className="text-center mt-4">
+      <div className="text-center pt-0">
         <button
           className="text-sm font-medium text-blue-600 hover:underline focus:outline-none"
           onClick={() => setShowAll(true)}

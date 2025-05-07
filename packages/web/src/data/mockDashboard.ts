@@ -35,10 +35,10 @@ export const ALERTS = [
 ];
 
 export const NEWS = [
-  { headline: 'SEC Chair Testifies on Crypto Regulation Framework', source: 'Bloomberg', time: '2h ago', tag: 'SEC' },
+  { headline: 'SEC Chair Testifies on Crypto Regulation Framework', source: 'Bloomberg', time: '2h ago', tag: 'US' },
   { headline: 'Ethereum Foundation Releases Validator Security Guidelines', source: 'CoinDesk', time: '5h ago', tag: 'ETH' },
-  { headline: 'EU MiCA Framework Implementation Timeline Accelerated', source: 'Financial Times', time: '8h ago', tag: 'MiCA' },
+  { headline: 'EU MiCA Framework Implementation Timeline Accelerated', source: 'Financial Times', time: '8h ago', tag: 'International' },
   { headline: 'Solana DeFi Protocol Patches Critical Vulnerability', source: 'The Block', time: '10h ago', tag: 'SOL' },
   { headline: 'BlackRock Bitcoin ETF Sees $235M Inflow in Single Day', source: 'WSJ', time: '12h ago', tag: 'BTC' },
-  { headline: 'CFTC Issues Guidance on Crypto Derivatives Compliance', source: 'Reuters', time: '1d ago', tag: 'CFTC' },
+  { headline: 'CFTC Issues Guidance on Crypto Derivatives Compliance', source: 'Reuters', time: '1d ago', tag: 'US' },
 ];

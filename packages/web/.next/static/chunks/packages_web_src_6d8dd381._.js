@@ -118,6 +118,14 @@ const NAV_LINKS = [
     {
         label: 'Portfolio',
         href: '/portfolio'
+    },
+    {
+        label: 'Taxes',
+        href: '/taxes'
+    },
+    {
+        label: 'Ask',
+        href: '/ask'
     }
 ];
 function NavBar() {
@@ -158,12 +166,12 @@ function NavBar() {
                         children: "HighWater Protocol"
                     }, void 0, false, {
                         fileName: "[project]/packages/web/src/components/NavBar.tsx",
-                        lineNumber: 38,
+                        lineNumber: 40,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/packages/web/src/components/NavBar.tsx",
-                    lineNumber: 37,
+                    lineNumber: 39,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$15$2e$3$2e$1_react$2d$dom$40$19$2e$0$2e$0_react$40$19$2e$0$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("ul", {
@@ -175,40 +183,40 @@ function NavBar() {
                                 children: link.label
                             }, void 0, false, {
                                 fileName: "[project]/packages/web/src/components/NavBar.tsx",
-                                lineNumber: 43,
+                                lineNumber: 45,
                                 columnNumber: 15
                             }, this)
                         }, link.href, false, {
                             fileName: "[project]/packages/web/src/components/NavBar.tsx",
-                            lineNumber: 42,
+                            lineNumber: 44,
                             columnNumber: 13
                         }, this))
                 }, void 0, false, {
                     fileName: "[project]/packages/web/src/components/NavBar.tsx",
-                    lineNumber: 40,
+                    lineNumber: 42,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$15$2e$3$2e$1_react$2d$dom$40$19$2e$0$2e$0_react$40$19$2e$0$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                     className: "flex-1 flex items-center justify-end gap-4 min-w-0",
                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$15$2e$3$2e$1_react$2d$dom$40$19$2e$0$2e$0_react$40$19$2e$0$2e$0$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$packages$2f$web$2f$src$2f$components$2f$AuthNav$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
                         fileName: "[project]/packages/web/src/components/NavBar.tsx",
-                        lineNumber: 55,
+                        lineNumber: 57,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/packages/web/src/components/NavBar.tsx",
-                    lineNumber: 54,
+                    lineNumber: 56,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/packages/web/src/components/NavBar.tsx",
-            lineNumber: 36,
+            lineNumber: 38,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/packages/web/src/components/NavBar.tsx",
-        lineNumber: 35,
+        lineNumber: 37,
         columnNumber: 5
     }, this);
 }
