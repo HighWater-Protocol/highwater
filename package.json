@@ -2,6 +2,7 @@
   "name": "highwater",
   "version": "0.1.0",
   "private": true,
+  "packageManager": "pnpm@10.10.0",
   "scripts": {
     "lint": "eslint . --ext .ts,.tsx",
     "dev": "turbo run dev",

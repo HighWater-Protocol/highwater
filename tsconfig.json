@@ -10,7 +10,8 @@
       "skipLibCheck": true,
       "baseUrl": ".",                    // for path mapping
       "paths": {
-        "@/*": ["packages/web/*"]       // adjust if you add more aliases
+        "@/*": ["packages/web/*"],
+        "@highwater/types": ["packages/types/src"]
       }
     },
     "include": ["packages/**/*"],
