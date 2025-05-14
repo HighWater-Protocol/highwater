@@ -1,6 +1,6 @@
 # Node modules
-node_modules
 **/node_modules
+!**/node_modules/@highwater
 
 # Build outputs
 **/dist
@@ -30,8 +30,6 @@ Thumbs.db
 *.sw?
 
 # Docker
-Dockerfile*
-docker-compose*
 .dockerignore
 
 # Test files
@@ -47,3 +45,11 @@ coverage
 
 # Turbo
 .turbo
+
+# Git
+.git
+.gitignore
+
+# Next.js
+.next
+out

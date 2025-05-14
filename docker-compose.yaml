@@ -3,8 +3,8 @@ version: '3.8'
 services:
   api:
     build:
-      context: .
-      dockerfile: Dockerfile.api
+      context: ./backend
+      dockerfile: ./Dockerfile
     image: highwater/api
     ports:
       - "4000:4000"
@@ -12,13 +12,13 @@ services:
       - PORT=4000
       - NODE_ENV=development
     volumes:
-      - ./packages/api:/app/api
-      - ./packages/types:/app/packages/types
+      - ./backend:/app
+      - /app/node_modules
 
   web:
     build:
-      context: .
-      dockerfile: Dockerfile.web
+      context: ./frontend
+      dockerfile: ./Dockerfile
     image: highwater/web
     ports:
       - "3000:3000"
@@ -26,5 +26,5 @@ services:
       - PORT=3000
       - NODE_ENV=development
     volumes:
-      - ./packages/web:/app/web
-      - ./packages/types:/app/packages/types
+      - ./frontend:/app
+      - /app/node_modules
