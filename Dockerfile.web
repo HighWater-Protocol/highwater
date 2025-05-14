@@ -18,7 +18,8 @@ COPY packages/web/package.json ./packages/web/
 RUN pnpm install --frozen-lockfile
 
 # Copy the rest of the application code
-COPY . .
+COPY packages/types ./packages/types
+COPY packages/web ./packages/web
 
 # Build the application
 WORKDIR /app/packages/web
@@ -27,17 +28,32 @@ RUN pnpm build
 # Use a lighter image for the final build
 FROM node:24.0.1-alpine AS runner
 
+# Create app directory and set proper permissions
+RUN mkdir -p /app && chown -R node:node /app
 WORKDIR /app
 
+# Switch to node user early to avoid permission issues
+USER node
+
 # Copy built files and node_modules
-COPY --from=base /app/node_modules ./node_modules
-COPY --from=base /app/packages ./packages
-COPY --from=base /app/package.json ./
-COPY --from=base /app/pnpm-lock.yaml ./
+COPY --chown=node:node --from=base /app/node_modules ./node_modules
+COPY --chown=node:node --from=base /app/packages ./packages
+COPY --chown=node:node --from=base /app/package.json .
+COPY --chown=node:node --from=base /app/pnpm-lock.yaml .
+
+# Create necessary directories with correct permissions
+RUN mkdir -p /app/.turbo/cache && \
+    mkdir -p /app/packages/web/.next && \
+    chmod -R 755 /app
+
+# Expose the port the app runs on
+EXPOSE 3000
 
 # Install Turbo globally
 RUN npm install -g turbo
 
-# Set the default command to start the Turbo dev server
-USER node
-CMD ["turbo", "run", "dev", "--no-daemon"]
+# Set working directory to web package
+WORKDIR /app/packages/web
+
+# Start the development server
+CMD ["sh", "-c", "npm run dev"]

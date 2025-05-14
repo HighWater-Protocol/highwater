@@ -3,35 +3,28 @@ version: '3.8'
 services:
   api:
     build:
-      context: ./api
+      context: .
       dockerfile: Dockerfile.api
-    ports:
-      - "3000:3000"
-    environment:
-      - PORT=3000
-      - NODE_ENV=development
-    volumes:
-      - ./api:/app
-    working_dir: /app
-    command: ["npm", "run", "dev"]
-
-  web:
-    build:
-      context: ./web
-      dockerfile: Dockerfile.web
+    image: highwater/api
     ports:
       - "4000:4000"
     environment:
       - PORT=4000
       - NODE_ENV=development
     volumes:
-      - ./web:/app
-    working_dir: /app
-    command: ["npm", "run", "dev"]
+      - ./packages/api:/app/api
+      - ./packages/types:/app/packages/types
 
-  test:
-    image: node:20-alpine
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile.web
+    image: highwater/web
+    ports:
+      - "3000:3000"
+    environment:
+      - PORT=3000
+      - NODE_ENV=development
     volumes:
-      - ./:/app
-    working_dir: /app
-    command: ["sh", "-c", "sleep 3600s"]
+      - ./packages/web:/app/web
+      - ./packages/types:/app/packages/types
