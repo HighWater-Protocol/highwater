@@ -1,11 +1,11 @@
 "use client";
 import React from 'react';
-import NavBar from '../../components/NavBar';
-import { AllocationBreakdown } from '../../components/AllocationBreakdown';
-import GainLossAnalysis from '../../components/GainLossAnalysis';
-import TransactionSummaryTable from '../../components/TransactionSummaryTable';
-import HoldingsTable from '../../components/HoldingsTable';
-import RecentTrades from '../../components/RecentTrades';
+import NavBar from '@/components/NavBar';
+import { AllocationBreakdown } from '@/components/AllocationBreakdown';
+import GainLossAnalysis from '@/components/GainLossAnalysis';
+import TransactionSummaryTable from '@/components/TransactionSummaryTable';
+import HoldingsTable from '@/components/HoldingsTable';
+import RecentTrades from '@/components/RecentTrades';
 
 export default function Portfolio() {
   return (
@@ -19,7 +19,11 @@ export default function Portfolio() {
           </div>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <AllocationBreakdown />
+          <AllocationBreakdown 
+            data={[]} 
+            loading={false} 
+            error={null} 
+          />
           <GainLossAnalysis />
         </div>
         <TransactionSummaryTable />

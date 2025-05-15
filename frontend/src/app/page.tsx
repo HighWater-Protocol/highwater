@@ -1,12 +1,12 @@
 import React from 'react';
-import NavBar from '../components/NavBar';
-import PortfolioActivityChart from '../components/PortfolioActivityChart';
-import NetWorthOverview from '../components/NetWorthOverview';
-import PerformanceComparisonChart from '../components/PerformanceComparisonChart';
-import RiskComplianceFlags from '../components/RiskComplianceFlags';
-import TransactionSummaryTable from '../components/TransactionSummaryTable';
-import GainLossAnalysis from '../components/GainLossAnalysis';
-import { AllocationBreakdown } from '../components/AllocationBreakdown';
+import NavBar from '@/components/NavBar';
+import PortfolioActivityChartWrapper from '@/components/PortfolioActivityChartWrapper';
+import NetWorthOverview from '@/components/NetWorthOverview';
+import PerformanceComparisonChart from '@/components/PerformanceComparisonChart';
+import RiskComplianceFlags from '@/components/RiskComplianceFlags';
+import TransactionSummaryTable from '@/components/TransactionSummaryTable';
+import GainLossAnalysis from '@/components/GainLossAnalysis';
+import { AllocationBreakdown } from '@/components/AllocationBreakdown';
 
 async function getHealth() {
   const res = await fetch(
@@ -46,9 +46,18 @@ export default async function Home() {
         {/* Top Row: Activity Chart + Net Worth */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           <div className="lg:col-span-2">
-            <PortfolioActivityChart />
+            <PortfolioActivityChartWrapper />
           </div>
-          <NetWorthOverview />
+          <NetWorthOverview 
+            data={{
+              cryptoassets: 0,
+              investments: 0,
+              reserves: 0,
+              liabilities: 0
+            }} 
+            loading={false} 
+            error={null} 
+          />
         </div>
 
         {/* Performance Comparison + Risk Flags */}
@@ -66,7 +75,11 @@ export default async function Home() {
         </div>
 
         {/* Allocation Breakdown */}
-        <AllocationBreakdown />
+        <AllocationBreakdown 
+          data={[]} 
+          loading={false} 
+          error={null} 
+        />
 
         {/* API Health */}
         <section className="bg-white rounded shadow p-6">

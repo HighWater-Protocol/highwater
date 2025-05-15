@@ -4,3 +4,4 @@ export * from "./asset";
 export * from "./portfolio";
 export * from "./risk";
 export * from "./compliance";
+export * from "./insights";

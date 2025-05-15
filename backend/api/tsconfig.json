@@ -2,15 +2,18 @@
     "compilerOptions": {
       "outDir": "dist",
       "rootDir": "src",
-      "baseUrl": "src",
+      "baseUrl": ".",
       "paths": {
-        "@highwater/types": ["../../shared/ts/dist"]
+        "@highwater/types": ["../shared/ts/src"]
       },
       "strict": true,
       "esModuleInterop": true,
       "skipLibCheck": true,
-      "forceConsistentCasingInFileNames": true
+      "forceConsistentCasingInFileNames": true,
+      "moduleResolution": "node",
+      "target": "es6",
+      "module": "commonjs"
     },
-    "include": ["src"],
+    "include": ["src", "../shared/ts/src"],
     "exclude": ["node_modules", "dist"]
 }

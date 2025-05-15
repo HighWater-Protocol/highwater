@@ -1,7 +1,21 @@
 "use client";
+
 import React, { useState, useRef, useEffect } from 'react';
-import { InformationCircleIcon } from '@heroicons/react/24/outline';
-import { MARKET_SIGNALS } from '../data/mockDashboard';
+import { InformationCircleIcon, ExclamationTriangleIcon } from '@heroicons/react/24/outline';
+import { Skeleton } from '@/components/ui/skeleton';
+
+export interface MarketSignal {
+  title: string;
+  value: string;
+  change?: string;
+  footnote?: string;
+}
+
+interface MarketSignalsProps {
+  signals: MarketSignal[];
+  loading: boolean;
+  error: string | null;
+}
 
 const DESCRIPTIONS: Record<string, string> = {
   'Crypto Market Volatility Index': 'Measures the overall volatility of the cryptocurrency market over the last 30 days.',
@@ -14,7 +28,7 @@ const DESCRIPTIONS: Record<string, string> = {
   'Regulatory Activity': 'Tracks the number and severity of regulatory events or actions impacting the crypto market in the last 7 days.',
 };
 
-export default function MarketSignals() {
+export default function MarketSignals({ signals, loading, error }: MarketSignalsProps) {
   const [open, setOpen] = useState<string | null>(null);
   const popoverRef = useRef<HTMLDivElement>(null);
 
@@ -29,9 +43,36 @@ export default function MarketSignals() {
     return () => document.removeEventListener('mousedown', handleClick);
   }, [open]);
 
+  if (loading) {
+    return (
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 flex-1">
+        {[...Array(4)].map((_, i) => (
+          <Skeleton key={i} className="h-32 rounded-lg" />
+        ))}
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="bg-red-50 border-l-4 border-red-400 p-4 rounded-lg">
+        <div className="flex">
+          <div className="flex-shrink-0">
+            <ExclamationTriangleIcon className="h-5 w-5 text-red-400" />
+          </div>
+          <div className="ml-3">
+            <p className="text-sm text-red-700">
+              {error}
+            </p>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 flex-1">
-      {MARKET_SIGNALS.map((s) => (
+      {signals.map((s) => (
         <div key={s.title} className="relative bg-white rounded-lg shadow-lg border border-gray-200 p-5">
           <div className="flex items-center justify-between">
             <h3 className="text-sm font-medium text-gray-700">{s.title}</h3>
