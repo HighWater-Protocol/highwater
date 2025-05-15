@@ -1,59 +1,49 @@
-# Use an official Node.js image as the base
-FROM node:24.0.1-alpine AS base
+# Build stage
+FROM node:24.0.1-alpine AS builder
 
-# Install pnpm
-RUN npm install -g pnpm
+RUN corepack enable && corepack prepare pnpm@latest --activate
+
+# Build local dependencies
+WORKDIR /app
+COPY shared/ts ./shared/ts
+RUN cd shared/ts && pnpm install --frozen-lockfile
 
 # Set the working directory
-WORKDIR /app
+WORKDIR /app/frontend
 
-# Copy package files
-COPY package.json pnpm-lock.yaml ./
-
-# Create directory for shared types
-RUN mkdir -p node_modules/@highwater
-
-# Copy shared types
-COPY shared/ts/ ./node_modules/@highwater/
-
-# Install dependencies first for better caching
+# Build frontend dependencies
+COPY frontend/ .
 RUN pnpm install --frozen-lockfile
 
-# Copy the rest of the application code
-COPY . .
-
-# Build the application
+# Build frontend src
 RUN pnpm build
 
-# Use a lighter image for the final build
+# Runtime Image
 FROM node:24.0.1-alpine AS runner
 
-# Create app directory and set proper permissions
-RUN mkdir -p /app && chown -R node:node /app
 WORKDIR /app
 
-# Switch to node user early to avoid permission issues
-USER node
+RUN corepack enable && corepack prepare pnpm@latest --activate
 
-# Copy built files and node_modules
-COPY --chown=node:node --from=base /app/node_modules ./node_modules
-COPY --chown=node:node --from=base /app/package.json .
-COPY --chown=node:node --from=base /app/pnpm-lock.yaml .
-COPY --chown=node:node --from=base /app/.next ./.next
-COPY --chown=node:node --from=base /app/public ./public
+# Create a non-root user
+RUN addgroup -g 1001 -S nodejs && \
+    adduser -S nextjs -u 1001
 
-# Create necessary directories with correct permissions
-RUN mkdir -p /app/.next/cache && \
-    chmod -R 755 /app
+COPY --chown=nextjs:nodejs --from=builder /app/frontend/.next ./.next
+COPY --chown=nextjs:nodejs --from=builder /app/frontend/public ./public
+COPY --chown=nextjs:nodejs --from=builder /app/frontend/package.json ./package.json
+COPY --chown=nextjs:nodejs --from=builder /app/frontend/next.config.ts ./next.config.ts
 
-# Expose the port the app runs on
-EXPOSE 3000
-
+# Install production dependencies
+RUN npm install next
 # Install Turbo globally
-RUN npm install -g turbo
+# RUN npm install -g turbo
 
-# Set working directory to web package
-WORKDIR /app/packages/web
+EXPOSE 3000
+ENV HOSTNAME="0.0.0.0"
+ENV PORT=3000
 
-# Start the development server
-CMD ["sh", "-c", "npm run dev"]
+USER nextjs
+
+# production command
+CMD ["pnpm", "start"]
