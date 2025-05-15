@@ -2,13 +2,19 @@
   "name": "web",
   "version": "0.1.0",
   "private": true,
+  "packageManager": "pnpm@10.10.0",
   "scripts": {
+    "preinstall": "cd ../../shared/ts && pnpm install",
     "dev": "next dev --turbopack",
-    "build": "next build",
+    "build": "next build --no-lint",
     "start": "next start",
     "lint": "next lint"
   },
+  "optionalDependencies": {
+    "@highwater/types": "file:../shared/ts"
+  },
   "dependencies": {
+    "@highwater/types": "^0.1.0",
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.0",
     "@heroicons/react": "^2.2.0",
