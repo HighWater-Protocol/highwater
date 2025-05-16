@@ -6,14 +6,14 @@ RUN corepack enable && corepack prepare pnpm@latest --activate
 # Build local dependencies
 WORKDIR /app
 COPY shared/ts ./shared/ts
-RUN cd shared/ts && pnpm install --frozen-lockfile
+RUN cd shared/ts && pnpm install
 
 # Set the working directory
 WORKDIR /app/frontend
 
 # Build frontend dependencies
 COPY frontend/ .
-RUN pnpm install --frozen-lockfile
+RUN pnpm install
 
 # Build frontend src
 RUN pnpm build

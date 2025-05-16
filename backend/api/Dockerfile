@@ -6,7 +6,7 @@ RUN corepack enable && corepack prepare pnpm@latest --activate
 # Build local dependencies
 WORKDIR /app
 COPY shared/ts ./shared/ts
-RUN cd /app/shared/ts && pnpm install --frozen-lockfile && pnpm build
+RUN cd /app/shared/ts && pnpm install && pnpm build
 RUN pnpm add /app/shared/ts
 
 # Set the working directory
@@ -14,7 +14,7 @@ WORKDIR /app/backend/api
 
 # Build backend dependencies
 COPY backend/api/ .
-RUN pnpm install --frozen-lockfile
+RUN pnpm install
 
 # Build backend src
 RUN pnpm build
