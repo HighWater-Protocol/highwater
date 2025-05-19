@@ -1,6 +1,21 @@
 import { Router, Request, Response, NextFunction, RequestHandler } from "express";
 import { Portfolio } from "@highwater/types";
 
+// Local interface since it's not in the shared types yet
+interface PortfolioAllocation {
+  label: string;
+  value: number;
+}
+
+// Mock data for portfolio allocations
+const mockPortfolioAllocation: PortfolioAllocation[] = [
+  { label: 'Layer 1s', value: 1138000 },
+  { label: 'DeFi', value: 811420 },
+  { label: 'Stablecoins', value: 648135 },
+  { label: 'Tokenized Assets', value: 486652 },
+  { label: 'NFTs', value: 192277 },
+];
+
 const router = Router();
 
 interface PortfoliosRequest extends Request {
@@ -62,5 +77,23 @@ const getPortfolioById: RequestHandler = async (req: Request, res: Response, nex
 
 router.get("/", getPortfolios);
 router.get("/:id", getPortfolioById);
+
+// Get portfolio allocation
+const getPortfolioAllocation: RequestHandler = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    res.json({
+      success: true,
+      data: mockPortfolioAllocation,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+router.get("/:id/allocation", getPortfolioAllocation);
 
 export default router;

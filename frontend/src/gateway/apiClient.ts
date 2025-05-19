@@ -1,4 +1,10 @@
-import { AIInsight, Alert, MarketSignal, NewsItem } from '@highwater/types' // Adjust the import path as necessary
+import { AIInsight, Alert, MarketSignal, NewsItem } from '@highwater/types'
+
+// Local interface since it's not in the shared types yet
+interface PortfolioAllocation {
+  label: string
+  value: number
+}
 
 // Base API client configuration
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:4000';
@@ -41,6 +47,10 @@ export const apiClient = {
   
   // News
   getNews: () => fetchFromApi<NewsItem[]>('/api/v1/news'),
+  
+  // Portfolio
+  getPortfolioAllocation: (portfolioId: string) => 
+    fetchFromApi<PortfolioAllocation[]>(`/api/v1/portfolios/${portfolioId}/allocation`),
 
   // Add more API methods here as needed
 };

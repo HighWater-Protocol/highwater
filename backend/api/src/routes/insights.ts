@@ -43,6 +43,7 @@ const mockNews: NewsItem[] = [
   { headline: 'CFTC Issues Guidance on Crypto Derivatives Compliance', source: 'Reuters', time: '1d ago', tag: 'CFTC' },
 ];
 
+
 // Market Signals
 const getMarketSignals: RequestHandler = async (
   req: Request,
@@ -116,5 +117,6 @@ router.get('/market/signals', getMarketSignals);
 router.get('/ai/insights', getAIInsights);
 router.get('/alerts', getAlerts);
 router.get('/news', getNews);
+
 
 export default router;
