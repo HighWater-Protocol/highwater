@@ -1,12 +1,12 @@
 'use client';
 
 import React from 'react'
-import NavBar from '@/components/NavBar'
-import MarketSignals from '@/components/MarketSignals'
-import AIInsights from '@/components/AIInsights'
-import Alerts from '@/components/Alerts'
-import NewsFeed from '@/components/NewsFeed'
-import OnChainTrends from '@/components/OnChainTrends'
+import NavBar from '@/components/ui/NavBar'
+import MarketSignals from '@/components/insights/MarketSignals'
+import AIInsights from '@/components/insights/AIInsights'
+import Alerts from '@/components/other/Alerts'
+import NewsFeed from '@/components/insights/NewsFeed'
+import OnChainTrends from '@/components/insights/OnChainTrends'
 import { insightPageAPIs } from '@/gateway/insightPageAPIs'
 import { Skeleton } from '@/components/ui/skeleton'
 

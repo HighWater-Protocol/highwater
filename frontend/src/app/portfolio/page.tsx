@@ -1,11 +1,11 @@
 "use client";
 import React from 'react';
-import NavBar from '../../components/NavBar';
-import { AllocationBreakdown } from '../../components/AllocationBreakdown';
-import GainLossAnalysis from '../../components/GainLossAnalysis';
-import TransactionSummaryTable from '../../components/TransactionSummaryTable';
-import HoldingsTable from '../../components/HoldingsTable';
-import RecentTrades from '../../components/RecentTrades';
+import NavBar from '../../components/ui/NavBar';
+import { AllocationBreakdown } from '../../components/portfolios/AllocationBreakdown';
+import GainLossAnalysis from '../../components/insights/GainLossAnalysis';
+import TransactionSummaryTable from '../../components/portfolios/TransactionSummaryTable';
+import HoldingsTable from '../../components/portfolios/HoldingsTable';
+import RecentTrades from '../../components/portfolios/RecentTrades';
 
 export default function Portfolio() {
   return (

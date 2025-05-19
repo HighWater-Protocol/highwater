@@ -1,19 +1,16 @@
-import { AIInsight, Alert, MarketSignal, NewsItem } from '@highwater/types'
+import { 
+  AIInsight, 
+  Alert, 
+  MarketSignal, 
+  NewsItem,
+  PortfolioAllocation,
+  RiskComplianceFlag
+} from '@highwater/types';
 
-// Local interfaces since they're not in the shared types yet
-interface PortfolioAllocation {
-  label: string
-  value: number
-}
-
-interface RiskComplianceFlag {
-  id: string;
-  title: string;
-  description: string;
-  severity: 'low' | 'medium' | 'high';
-  category: 'risk' | 'compliance' | 'security';
-  createdAt: string;
-  updatedAt: string;
+// Local interface for portfolio time series data point
+export interface PortfolioTimeSeriesPoint {
+  date: string;
+  value: number;
 }
 
 // Base API client configuration
@@ -31,33 +28,32 @@ async function fetchFromApi<T>(endpoint: string, options?: RequestInit): Promise
       ...options,
       headers: {
         'Content-Type': 'application/json',
-        ...options?.headers,
+        ...(options?.headers || {}),
       },
     });
 
     console.log(`[API] Response status: ${response.status} for ${url}`);
     
+    const responseData = await response.json();
+    
     if (!response.ok) {
-      const errorText = await response.text();
-      console.error(`[API] Error response:`, errorText);
+      const errorMessage = typeof responseData === 'object' && responseData !== null && 'message' in responseData
+        ? responseData.message
+        : `HTTP ${response.status}: ${response.statusText}`;
       
-      let errorData;
-      try {
-        errorData = JSON.parse(errorText);
-      } catch (e) {
-        throw new Error(`HTTP ${response.status}: ${errorText}`);
-      }
-      
-      throw new Error(errorData.message || `HTTP ${response.status}: ${response.statusText}`);
+      console.error(`[API] Error response:`, errorMessage);
+      throw new Error(errorMessage);
     }
 
-    const data = await response.json();
-    // If the response has a data property, return that, otherwise return the whole response
-    const result = data.data !== undefined ? data.data : data;
-    console.log('[API] Response data:', result);
-    return result;
+    // If the response has a success flag and data, return the data
+    if (responseData && typeof responseData === 'object' && 'success' in responseData && 'data' in responseData) {
+      return responseData.data;
+    }
+
+    // For backward compatibility, return the response as is if it doesn't match our expected format
+    return responseData;
   } catch (error) {
-    console.error(`[API] Request failed for ${url}:`, error);
+    console.error('[API] Request failed:', error);
     throw error;
   }
 }
@@ -79,6 +75,16 @@ export const apiClient = {
   getPortfolioAllocation: (portfolioId: string) => 
     fetchFromApi<PortfolioAllocation[]>(`/api/v1/portfolios/${portfolioId}/allocation`),
 
+  getPortfolioTimeSeries: (portfolioId: string, range: string = '1M') => 
+    fetchFromApi<PortfolioTimeSeriesPoint[]>(
+      `/api/v1/portfolios/${portfolioId}/timeseries?range=${range}`
+    ),
+    
+  getPortfolioValue: (portfolioId: string) => 
+    fetchFromApi<{ currentValue: number; changePercent: number }>(
+      `/api/v1/portfolios/${portfolioId}/value`
+    ),
+  
   // Risk & Compliance
   getRiskComplianceFlags: () => 
     fetchFromApi<RiskComplianceFlag[]>('/api/v1/risk/flags'),

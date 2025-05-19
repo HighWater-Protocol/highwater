@@ -1,6 +1,6 @@
 "use client";
 import React from 'react';
-import MOCK_ALLOC from './AllocationBreakdown';
+import MOCK_ALLOC from '../portfolios/AllocationBreakdown';
 import { BarChart, Bar, XAxis, ResponsiveContainer } from 'recharts';
 
 // Cryptoassets now equals sum of Allocation Breakdown

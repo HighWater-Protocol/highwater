@@ -1,14 +1,14 @@
 'use client';
 
-import NavBar from '../components/NavBar';
-import PortfolioActivityChart from '../components/PortfolioActivityChart';
-import NetWorthOverview from '../components/NetWorthOverview';
-import PerformanceComparisonChart from '../components/PerformanceComparisonChart';
-import RiskComplianceFlags from '../components/RiskComplianceFlags';
-import TransactionSummaryTable from '../components/TransactionSummaryTable';
-import GainLossAnalysis from '../components/GainLossAnalysis';
-import { AllocationBreakdown } from '../components/AllocationBreakdown';
-import HealthCheck from '../components/HealthCheck';
+import NavBar from '../components/ui/NavBar';
+import PortfolioActivityChart from '../components/portfolios/PortfolioActivityChart';
+import NetWorthOverview from '../components/home/NetWorthOverview';
+import PerformanceComparisonChart from '../components/insights/PerformanceComparisonChart';
+import RiskComplianceFlags from '../components/other/RiskComplianceFlags';
+import TransactionSummaryTable from '../components/portfolios/TransactionSummaryTable';
+import GainLossAnalysis from '../components/insights/GainLossAnalysis';
+import { AllocationBreakdown } from '../components/portfolios/AllocationBreakdown';
+import HealthCheck from '../components/other/HealthCheck';
 import { useHomePageAPIs } from '../gateway/HomePageAPIs';
 
 // Client component wrapper to handle client-side data fetching
