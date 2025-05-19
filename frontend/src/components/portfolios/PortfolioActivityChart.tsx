@@ -8,7 +8,7 @@ type TimeRange = '1D' | '1W' | '1M' | '3M' | 'YTD' | '1Y' | 'ALL';
 // This would typically come from your auth context or props
 const DEFAULT_PORTFOLIO_ID = 'default';
 
-import { PortfolioTimeSeriesPoint } from '@/gateway/apiClient';
+import { PortfolioTimeSeriesPoint } from '@/types/portfolio';
 
 interface PortfolioValue {
   currentValue: number;

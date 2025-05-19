@@ -6,12 +6,7 @@ import {
   PortfolioAllocation,
   RiskComplianceFlag
 } from '@highwater/types';
-
-// Local interface for portfolio time series data point
-export interface PortfolioTimeSeriesPoint {
-  date: string;
-  value: number;
-}
+import { PortfolioTimeSeriesPoint } from '../types/portfolio';
 
 // Base API client configuration
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:4000';

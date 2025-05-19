@@ -1,45 +1,12 @@
 import { apiClient } from './apiClient';
-import { PortfolioTimeSeriesPoint } from './apiClient';
-
-// Types for portfolio data
-export interface Holding {
-  id: string;
-  symbol: string;
-  name: string;
-  amount: number;
-  value: number;
-  allocation: number;
-  price: number;
-  change24h: number;
-}
-
-export interface Trade {
-  id: string;
-  symbol: string;
-  type: 'BUY' | 'SELL';
-  amount: number;
-  price: number;
-  value: number;
-  timestamp: string;
-  status: 'COMPLETED' | 'PENDING' | 'FAILED';
-}
-
-export interface Transaction {
-  id: string;
-  type: 'DEPOSIT' | 'WITHDRAWAL' | 'TRADE' | 'TRANSFER';
-  amount: number;
-  asset: string;
-  timestamp: string;
-  status: 'COMPLETED' | 'PENDING' | 'FAILED';
-  details?: Record<string, unknown>;
-}
-
-export interface Allocation {
-  asset: string;
-  value: number;
-  allocation: number;
-  color?: string;
-}
+import { PortfolioAllocation, PortfolioAsset, Asset } from '@highwater/types';
+import { 
+  Holding, 
+  Trade, 
+  Transaction, 
+  Allocation,
+  PortfolioTimeSeriesPoint 
+} from '../types/portfolio';
 
 // API functions
 export const portfolioAPI = {
@@ -97,12 +64,14 @@ export const portfolioAPI = {
   async getAllocation(portfolioId: string = 'default'): Promise<Allocation[]> {
     try {
       const portfolioAllocations = await apiClient.getPortfolioAllocation(portfolioId);
+      const totalValue = portfolioAllocations.reduce((sum, alloc) => sum + alloc.value, 0);
+      
       // Map the PortfolioAllocation[] to Allocation[]
       return portfolioAllocations.map(alloc => ({
         asset: alloc.label,
         value: alloc.value,
-        allocation: 0, // This will be calculated based on the total value
-        color: `#${Math.floor(Math.random()*16777215).toString(16)}` // Generate a random color if not provided
+        allocation: totalValue > 0 ? (alloc.value / totalValue) * 100 : 0,
+        color: `#${Math.floor(Math.random()*16777215).toString(16)}`
       }));
     } catch (error) {
       console.error('Error fetching portfolio allocation:', error);
