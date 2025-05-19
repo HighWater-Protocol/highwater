@@ -1,12 +1,12 @@
-// Centralized mock data for dashboard/insights
-export type Signal = {
-  title: string
-  value: string
-  change?: string
-  footnote?: string
-};
+import { Router, Request, Response, NextFunction, RequestHandler } from "express";
+import { ParsedQs } from "qs";
+// Import types from the shared types package
+import { MarketSignal, AIInsight, Alert, NewsItem } from "@highwater/types";
 
-export const MARKET_SIGNALS: Signal[] = [
+const router = Router();
+
+// Mock data - replace with actual database calls in production
+const mockMarketSignals: MarketSignal[] = [
   { title: 'Crypto Market Volatility Index', value: '76.4', footnote: '30d avg: 58.2', change: '+12.3%' },
   { title: 'Total DeFi TVL', value: '$42.8B', footnote: '7d change: +$1.4B', change: '+3.5%' },
   { title: 'Bitcoin Dominance', value: '52.3%', footnote: '30d avg: 54.6%', change: '-1.8%' },
@@ -17,13 +17,13 @@ export const MARKET_SIGNALS: Signal[] = [
   { title: 'Regulatory Activity', value: 'Medium', footnote: 'Last 7 days', change: '+3 events' },
 ];
 
-export const AI_INSIGHTS = [
+const mockAIInsights: AIInsight[] = [
   { text: 'Your ETH allocation increased in volatility by 17% today. Consider adjusting exposure.', priority: 'Medium priority', time: 'Detected 2 hours ago' },
   { text: 'Stablecoin inflows to exchanges at 3-month high. Potential buying pressure building.', priority: 'Informational', time: 'Detected 4 hours ago' },
   { text: 'Custodial concentration risk: 72% of client BTC held at single provider. Diversification recommended.', priority: 'High priority', time: 'Detected 1 day ago' },
 ];
 
-export const ALERTS = [
+const mockAlerts: Alert[] = [
   { title: 'Volatility Spike: SOL', desc: 'Solana volatility exceeds 30-day average by 42%. Current allocation: 8.3% of portfolio.', time: 'Apr 30, 2025 · 08:42 AM', action: 'Rebalance recommended' },
   { title: 'Custodian Overconcentration', desc: '72% of client assets held at CoinSecure. Best practice: ≤50% per custodian.', time: 'Apr 29, 2025 · 03:15 PM', action: 'Diversify holdings' },
   { title: 'Regulatory Flag: AVAX', desc: 'SEC classified Avalanche as a security. Current allocation: 4.2%.', time: 'Apr 28, 2025 · 11:23 AM', action: 'Monitor closely' },
@@ -34,7 +34,7 @@ export const ALERTS = [
   { title: 'Exchange Outage', desc: 'Kraken experienced a 2-hour withdrawal outage. No client funds lost.', time: 'Apr 23, 2025 · 04:05 PM', action: 'No action needed' },
 ];
 
-export const NEWS = [
+const mockNews: NewsItem[] = [
   { headline: 'SEC Chair Testifies on Crypto Regulation Framework', source: 'Bloomberg', time: '2h ago', tag: 'SEC' },
   { headline: 'Ethereum Foundation Releases Validator Security Guidelines', source: 'CoinDesk', time: '5h ago', tag: 'ETH' },
   { headline: 'EU MiCA Framework Implementation Timeline Accelerated', source: 'Financial Times', time: '8h ago', tag: 'MiCA' },
@@ -42,3 +42,81 @@ export const NEWS = [
   { headline: 'BlackRock Bitcoin ETF Sees $235M Inflow in Single Day', source: 'WSJ', time: '12h ago', tag: 'BTC' },
   { headline: 'CFTC Issues Guidance on Crypto Derivatives Compliance', source: 'Reuters', time: '1d ago', tag: 'CFTC' },
 ];
+
+
+// Market Signals
+const getMarketSignals: RequestHandler = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    // TODO: Replace with actual database call
+    res.json({
+      success: true,
+      data: mockMarketSignals
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+// AI Insights
+const getAIInsights: RequestHandler = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    // TODO: Replace with actual database call
+    res.json({
+      success: true,
+      data: mockAIInsights
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+// Alerts
+const getAlerts: RequestHandler = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    // TODO: Replace with actual database call
+    res.json({
+      success: true,
+      data: mockAlerts
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+// News
+const getNews: RequestHandler = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    // TODO: Replace with actual database call
+    res.json({
+      success: true,
+      data: mockNews
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+// Routes
+router.get('/market/signals', getMarketSignals);
+router.get('/ai/insights', getAIInsights);
+router.get('/alerts', getAlerts);
+router.get('/news', getNews);
+
+
+export default router;

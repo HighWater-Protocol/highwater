@@ -3,19 +3,26 @@ FROM node:24.0.1-alpine AS builder
 
 RUN corepack enable && corepack prepare pnpm@latest --activate
 
-# Build local dependencies
+# Set up working directory
 WORKDIR /app
-COPY shared/ts ./shared/ts
+
+# Copy and build shared package
+COPY shared/ts/package.json shared/ts/pnpm-lock.yaml ./shared/ts/
 RUN cd shared/ts && pnpm install
 
-# Set the working directory
+# Copy and build frontend
+COPY frontend/package.json frontend/pnpm-lock.yaml ./frontend/
+RUN cd frontend && pnpm install
+
+# Copy remaining source files
+COPY shared/ts ./shared/ts
+COPY frontend ./frontend
+
+# Build shared package
+RUN cd shared/ts && pnpm run build
+
+# Build frontend
 WORKDIR /app/frontend
-
-# Build frontend dependencies
-COPY frontend/ .
-RUN pnpm install
-
-# Build frontend src
 RUN pnpm build
 
 # Runtime Image

@@ -1,31 +1,24 @@
-import React from 'react';
-import NavBar from '../components/NavBar';
-import PortfolioActivityChart from '../components/PortfolioActivityChart';
-import NetWorthOverview from '../components/NetWorthOverview';
-import PerformanceComparisonChart from '../components/PerformanceComparisonChart';
-import RiskComplianceFlags from '../components/RiskComplianceFlags';
-import TransactionSummaryTable from '../components/TransactionSummaryTable';
-import GainLossAnalysis from '../components/GainLossAnalysis';
-import { AllocationBreakdown } from '../components/AllocationBreakdown';
+'use client';
 
-async function getHealth() {
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/health`,
-    { cache: 'no-store' }
-  );
-  if (!res.ok) {
-    throw new Error(`Health check failed: ${res.statusText}`);
-  }
-  return res.json() as Promise<{ status: string; timestamp: string }>;
-}
+import NavBar from '../components/ui/NavBar';
+import PortfolioActivityChart from '../components/portfolios/PortfolioActivityChart';
+import NetWorthOverview from '../components/home/NetWorthOverview';
+import PerformanceComparisonChart from '../components/insights/PerformanceComparisonChart';
+import RiskComplianceFlags from '../components/other/RiskComplianceFlags';
+import TransactionSummaryTable from '../components/portfolios/TransactionSummaryTable';
+import GainLossAnalysis from '../components/insights/GainLossAnalysis';
+import { AllocationBreakdown } from '../components/portfolios/AllocationBreakdown';
+import HealthCheck from '../components/other/HealthCheck';
+import { useHomePageAPIs } from '../gateway/HomePageAPIs';
 
-export default async function Home() {
-  let health: { status: string; timestamp: string };
-  try {
-    health = await getHealth();
-  } catch (err: any) {
-    health = { status: 'error', timestamp: err.message };
-  }
+// Client component wrapper to handle client-side data fetching
+function HomeContent() {
+  const { 
+    portfolioAllocation, 
+    riskComplianceFlags, 
+    loading, 
+    error 
+  } = useHomePageAPIs('default');
 
   return (
     <>
@@ -69,18 +62,12 @@ export default async function Home() {
         <AllocationBreakdown />
 
         {/* API Health */}
-        <section className="bg-white rounded shadow p-6">
-          <h2 className="text-xl font-semibold mb-2 text-gray-800">API Health Check</h2>
-          <div className="flex flex-col md:flex-row md:items-center md:space-x-8">
-            <div className="mb-2 md:mb-0">
-              <span className={`inline-block px-3 py-1 rounded-full text-white text-sm ${health.status === 'ok' ? 'bg-green-600' : 'bg-red-500'}`}>{health.status}</span>
-            </div>
-            <div>
-              <span className="text-gray-500 text-sm">Timestamp: {health.timestamp}</span>
-            </div>
-          </div>
-        </section>
+        <div className="bg-white rounded shadow p-6">
+          <HealthCheck />
+        </div>
       </main>
     </>
   );
 }
+
+export default HomeContent;
