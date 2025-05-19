@@ -1,6 +1,48 @@
 import { Router, Request, Response, NextFunction, RequestHandler } from "express";
 import { RiskReport } from "@highwater/types";
 
+import { RiskComplianceFlag } from '@highwater/types';
+
+// Mock data for risk and compliance flags
+const mockRiskComplianceFlags: RiskComplianceFlag[] = [
+  {
+    id: '1',
+    title: 'High Volatility Exposure',
+    description: '13.5% of portfolio in highly volatile assets (SOL, AVAX)',
+    severity: 'high',
+    category: 'risk',
+    createdAt: new Date().toISOString(),
+    updatedAt: new Date().toISOString()
+  },
+  {
+    id: '2',
+    title: 'Concentration Risk',
+    description: 'BTC represents 43% of crypto allocation',
+    severity: 'medium',
+    category: 'risk',
+    createdAt: new Date().toISOString(),
+    updatedAt: new Date().toISOString()
+  },
+  {
+    id: '3',
+    title: 'Regulatory Exposure',
+    description: '3.2% allocation to unregistered assets',
+    severity: 'high',
+    category: 'compliance',
+    createdAt: new Date().toISOString(),
+    updatedAt: new Date().toISOString()
+  },
+  {
+    id: '4',
+    title: 'Custody Security',
+    description: '93% of assets in institutional custody',
+    severity: 'low',
+    category: 'security',
+    createdAt: new Date().toISOString(),
+    updatedAt: new Date().toISOString()
+  }
+];
+
 const router = Router();
 
 interface RiskRequest extends Request {
@@ -62,7 +104,22 @@ const getRiskReportById: RequestHandler = async (req: Request, res: Response, ne
   }
 };
 
+// Get all risk and compliance flags
+const getRiskComplianceFlags: RequestHandler = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    // In a real application, you would fetch this from a database
+    // For now, we'll return the mock data
+    res.json({
+      success: true,
+      data: mockRiskComplianceFlags,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
 router.get("/", getRiskReports);
+router.get("/flags", getRiskComplianceFlags);
 router.get("/:id", getRiskReportById);
 
 export default router;

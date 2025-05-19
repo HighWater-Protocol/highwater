@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import NavBar from '../components/NavBar';
 import PortfolioActivityChart from '../components/PortfolioActivityChart';
@@ -7,25 +9,35 @@ import RiskComplianceFlags from '../components/RiskComplianceFlags';
 import TransactionSummaryTable from '../components/TransactionSummaryTable';
 import GainLossAnalysis from '../components/GainLossAnalysis';
 import { AllocationBreakdown } from '../components/AllocationBreakdown';
+import { useHomePageAPIs, getHealth } from '../gateway/HomePageAPIs';
 
-async function getHealth() {
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/health`,
-    { cache: 'no-store' }
+// Client component wrapper to handle client-side data fetching
+function HomeContent() {
+  const { 
+    portfolioAllocation, 
+    riskComplianceFlags, 
+    loading, 
+    error 
+  } = useHomePageAPIs('default');
+
+  // Health check state
+  const [health, setHealth] = React.useState<{ status: string; timestamp: string }>(
+    { status: 'loading...', timestamp: new Date().toISOString() }
   );
-  if (!res.ok) {
-    throw new Error(`Health check failed: ${res.statusText}`);
-  }
-  return res.json() as Promise<{ status: string; timestamp: string }>;
-}
 
-export default async function Home() {
-  let health: { status: string; timestamp: string };
-  try {
-    health = await getHealth();
-  } catch (err: any) {
-    health = { status: 'error', timestamp: err.message };
-  }
+  // Fetch health status on component mount
+  React.useEffect(() => {
+    const fetchHealth = async () => {
+      try {
+        const healthData = await getHealth();
+        setHealth(healthData);
+      } catch (err: any) {
+        setHealth({ status: 'error', timestamp: err.message });
+      }
+    };
+    
+    fetchHealth();
+  }, []);
 
   return (
     <>
@@ -84,3 +96,5 @@ export default async function Home() {
     </>
   );
 }
+
+export default HomeContent;

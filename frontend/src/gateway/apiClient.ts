@@ -1,9 +1,19 @@
 import { AIInsight, Alert, MarketSignal, NewsItem } from '@highwater/types'
 
-// Local interface since it's not in the shared types yet
+// Local interfaces since they're not in the shared types yet
 interface PortfolioAllocation {
   label: string
   value: number
+}
+
+interface RiskComplianceFlag {
+  id: string;
+  title: string;
+  description: string;
+  severity: 'low' | 'medium' | 'high';
+  category: 'risk' | 'compliance' | 'security';
+  createdAt: string;
+  updatedAt: string;
 }
 
 // Base API client configuration
@@ -51,6 +61,10 @@ export const apiClient = {
   // Portfolio
   getPortfolioAllocation: (portfolioId: string) => 
     fetchFromApi<PortfolioAllocation[]>(`/api/v1/portfolios/${portfolioId}/allocation`),
+
+  // Risk & Compliance
+  getRiskComplianceFlags: () => 
+    fetchFromApi<RiskComplianceFlag[]>('/api/v1/risk/flags'),
 
   // Add more API methods here as needed
 };
