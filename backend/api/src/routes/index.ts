@@ -5,8 +5,12 @@ import portfoliosRouter from "./portfolios";
 import riskRouter from "./risk";
 import complianceRouter from "./compliance";
 import insightsRouter from "./insights";
+import { getHealth } from "./health";
 
 const router = Router();
+
+// Health check endpoint
+router.get("/health", getHealth);
 
 // API routes
 router.use("/assets", assetsRouter);

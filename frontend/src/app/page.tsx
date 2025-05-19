@@ -1,6 +1,5 @@
 'use client';
 
-import React from 'react';
 import NavBar from '../components/NavBar';
 import PortfolioActivityChart from '../components/PortfolioActivityChart';
 import NetWorthOverview from '../components/NetWorthOverview';
@@ -9,7 +8,8 @@ import RiskComplianceFlags from '../components/RiskComplianceFlags';
 import TransactionSummaryTable from '../components/TransactionSummaryTable';
 import GainLossAnalysis from '../components/GainLossAnalysis';
 import { AllocationBreakdown } from '../components/AllocationBreakdown';
-import { useHomePageAPIs, getHealth } from '../gateway/HomePageAPIs';
+import HealthCheck from '../components/HealthCheck';
+import { useHomePageAPIs } from '../gateway/HomePageAPIs';
 
 // Client component wrapper to handle client-side data fetching
 function HomeContent() {
@@ -19,25 +19,6 @@ function HomeContent() {
     loading, 
     error 
   } = useHomePageAPIs('default');
-
-  // Health check state
-  const [health, setHealth] = React.useState<{ status: string; timestamp: string }>(
-    { status: 'loading...', timestamp: new Date().toISOString() }
-  );
-
-  // Fetch health status on component mount
-  React.useEffect(() => {
-    const fetchHealth = async () => {
-      try {
-        const healthData = await getHealth();
-        setHealth(healthData);
-      } catch (err: any) {
-        setHealth({ status: 'error', timestamp: err.message });
-      }
-    };
-    
-    fetchHealth();
-  }, []);
 
   return (
     <>
@@ -81,17 +62,9 @@ function HomeContent() {
         <AllocationBreakdown />
 
         {/* API Health */}
-        <section className="bg-white rounded shadow p-6">
-          <h2 className="text-xl font-semibold mb-2 text-gray-800">API Health Check</h2>
-          <div className="flex flex-col md:flex-row md:items-center md:space-x-8">
-            <div className="mb-2 md:mb-0">
-              <span className={`inline-block px-3 py-1 rounded-full text-white text-sm ${health.status === 'ok' ? 'bg-green-600' : 'bg-red-500'}`}>{health.status}</span>
-            </div>
-            <div>
-              <span className="text-gray-500 text-sm">Timestamp: {health.timestamp}</span>
-            </div>
-          </div>
-        </section>
+        <div className="bg-white rounded shadow p-6">
+          <HealthCheck />
+        </div>
       </main>
     </>
   );

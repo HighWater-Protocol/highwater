@@ -20,7 +20,11 @@ interface RiskComplianceFlag {
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:4000';
 
 async function fetchFromApi<T>(endpoint: string, options?: RequestInit): Promise<T> {
-  const url = `${API_BASE_URL}${endpoint}`;
+  // Ensure endpoint starts with a slash
+  const normalizedEndpoint = endpoint.startsWith('/') ? endpoint : `/${endpoint}`;
+  const url = `${API_BASE_URL}${normalizedEndpoint}`;
+  
+  console.log(`[API] Fetching: ${url}`);
   
   try {
     const response = await fetch(url, {
@@ -31,16 +35,29 @@ async function fetchFromApi<T>(endpoint: string, options?: RequestInit): Promise
       },
     });
 
+    console.log(`[API] Response status: ${response.status} for ${url}`);
+    
     if (!response.ok) {
-      const errorData = await response.json().catch(() => ({}));
-      throw new Error(errorData.message || 'API request failed');
+      const errorText = await response.text();
+      console.error(`[API] Error response:`, errorText);
+      
+      let errorData;
+      try {
+        errorData = JSON.parse(errorText);
+      } catch (e) {
+        throw new Error(`HTTP ${response.status}: ${errorText}`);
+      }
+      
+      throw new Error(errorData.message || `HTTP ${response.status}: ${response.statusText}`);
     }
 
     const data = await response.json();
     // If the response has a data property, return that, otherwise return the whole response
-    return data.data !== undefined ? data.data : data;
+    const result = data.data !== undefined ? data.data : data;
+    console.log('[API] Response data:', result);
+    return result;
   } catch (error) {
-    console.error(`API request failed for ${endpoint}:`, error);
+    console.error(`[API] Request failed for ${url}:`, error);
     throw error;
   }
 }
@@ -65,6 +82,18 @@ export const apiClient = {
   // Risk & Compliance
   getRiskComplianceFlags: () => 
     fetchFromApi<RiskComplianceFlag[]>('/api/v1/risk/flags'),
+
+  // Health Check
+  getHealth: () => fetchFromApi<{
+    status: 'ok' | 'error';
+    timestamp: string;
+    uptime: number;
+    environment: string;
+    version: string;
+    database: {
+      status: 'connected' | 'disconnected';
+    };
+  }>('/api/v1/health'),
 
   // Add more API methods here as needed
 };

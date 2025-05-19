@@ -1,5 +1,11 @@
 import type { NextConfig } from "next";
 
+// Set default API URL for development
+if (!process.env.NEXT_PUBLIC_API_BASE_URL) {
+  process.env.NEXT_PUBLIC_API_BASE_URL = 'http://localhost:4000';
+  console.warn('NEXT_PUBLIC_API_BASE_URL not set, using default:', process.env.NEXT_PUBLIC_API_BASE_URL);
+}
+
 const nextConfig: NextConfig = {
   // Enable source maps in all environments
   productionBrowserSourceMaps: true,
